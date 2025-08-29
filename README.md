@@ -1,47 +1,26 @@
----
+Security Overview Document
 
- Secure File Sharing System (Flask + AES Encryption)
-
- Project Overview
-
-This project is part of my internship assignment and demonstrates the development of a secure file sharing system. The application allows users to upload and download files safely, ensuring all files are encrypted before storage and decrypted upon retrieval.
-
-The system focuses on **data security**, applying **AES encryption** to protect sensitive information — simulating real-world scenarios where secure data handling is critical (e.g., healthcare, legal, or corporate environments).
-
----
-Features
-
-* ✅ Secure **file upload & download** via a web portal
-* ✅ **AES encryption** for files at rest
-* ✅ Decryption during download (ensures integrity)
-* ✅ Simple and user-friendly **HTML interface**
-* ✅ Basic **encryption key management**
-* ✅ Documented architecture and security considerations
-
----
-
-Tech Stack
-
-* **Backend:** Python (Flask)
-* **Encryption:** PyCryptodome (AES)
-* **Frontend:** HTML, CSS
-* **Version Control:** Git & GitHub
-
----
-
- Security Considerations
-
-* All files are encrypted with **AES symmetric encryption** before being saved.
-* Files are decrypted only at the point of download.
-* **Key management**: For demonstration, a static key is used. In real-world use, keys should be stored securely (e.g., environment variables, vault services).
-* Protects against unauthorized file access at rest.
-
----
-
-
-Author
-
-OLUWATOSIN RUTH OLUBOWALE
-Internship Project | 2025
-
-
+1. Introduction
+This document provides a simple security overview of the Secure File Sharing System developed as part of Internship Task 3. The goal of the project is to ensure that files can be uploaded and downloaded safely while maintaining confidentiality, integrity, and proper key handling.
+2. Encryption Method
+The system uses AES (Advanced Encryption Standard) for protecting files. AES is a widely used symmetric encryption algorithm, meaning the same key is used for both encryption and decryption. It is considered secure and is used in industries like healthcare, finance, and government for data protection.
+How it works in this project:
+- When a file is uploaded, it is encrypted using AES before being stored on the server.
+- When a file is downloaded, the system decrypts it using the same AES key before delivering it back to the user.
+- This ensures files are never stored in plain text and remain unreadable without the correct key.
+3. Key Handling
+Since AES uses a key, proper handling of the key is important. In this project:
+- A single secret key is generated and stored securely within the application.
+- The key is not hard-coded directly in the code that is shared publicly (to avoid exposure).
+- Only the application can access the encryption key, ensuring users do not directly interact with it.
+- Keys should be rotated (changed) periodically in real-world systems to improve security.
+4. File Integrity
+File integrity ensures that the uploaded and downloaded files are not modified during storage or transfer. The system checks that files can be properly decrypted before delivering them, which confirms that they have not been tampered with.
+5. Best Practices
+For real-world applications, the following best practices are recommended:
+- Use environment variables to store encryption keys instead of hard-coding them.
+- Limit access to files and encryption keys only to authorized users.
+- Use HTTPS for secure communication between client and server.
+- Regularly update libraries and dependencies to avoid vulnerabilities.
+6. Conclusion
+This project demonstrates the basics of secure file handling using AES encryption and simple key management. Although simplified for learning purposes, the concepts used here are the foundation of  how secure systems protect sensitive data in real-world scenario
